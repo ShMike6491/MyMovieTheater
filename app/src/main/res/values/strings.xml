@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">MyMovieTheater</string>
+    <string name="trending_poster">Trending Poster</string>
+    <string name="popular_movies">Popular Movies</string>
+    <string name="see_all">See all</string>
 </resources>
