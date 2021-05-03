@@ -10,7 +10,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         if(savedInstanceState == null) {
             supportFragmentManager.beginTransaction()
-                .add(R.id.container, HomeFragment.newInstance())
+                .add(R.id.container, HomeFragment())
                 .commitNow()
         }
     }

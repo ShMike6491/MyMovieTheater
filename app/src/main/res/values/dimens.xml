@@ -2,5 +2,7 @@
 <resources>
     <dimen name="margin_small">8dp</dimen>
 
-    <dimen name="size_middle">250dp</dimen>
+    <dimen name="size_middle">270dp</dimen>
+    <dimen name="size_l">180dp</dimen>
+    <dimen name="size_small">150dp</dimen>
 </resources>
