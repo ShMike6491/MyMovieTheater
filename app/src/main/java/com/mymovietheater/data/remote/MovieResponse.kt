@@ -1,7 +1,6 @@
 package com.mymovietheater.data.remote
 
 import com.google.gson.annotations.SerializedName
-import com.mymovietheater.data.local.MovieModel
 
 data class MovieResponse(
     @field:SerializedName("results") val results: List<MovieModel>,

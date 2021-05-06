@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.mymovietheater.R
-import com.mymovietheater.data.local.MovieModel
+import com.mymovietheater.data.remote.MovieModel
 import com.mymovietheater.databinding.ItemMovieBinding
 
 class HomeAdapter : RecyclerView.Adapter<HomeAdapter.ViewHolder>() {
@@ -45,7 +45,7 @@ class HomeAdapter : RecyclerView.Adapter<HomeAdapter.ViewHolder>() {
         fun bind(model: MovieModel) {
             binding.apply {
                 Glide.with(ivMovieItem)
-                    .load(model.poster)
+                    .load("https://image.tmdb.org/t/p/w500${model.poster}")
                     .centerCrop()
                     .transition(DrawableTransitionOptions.withCrossFade())
                     .error(R.drawable.ic_error)

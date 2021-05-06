@@ -4,13 +4,11 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.mymovietheater.R
-import com.mymovietheater.data.local.MovieModel
+import com.mymovietheater.data.remote.MovieModel
 import com.mymovietheater.databinding.FragmentMainBinding
 import com.mymovietheater.utils.AppState
-import com.mymovietheater.utils.getMovies
 
 class HomeFragment : Fragment(R.layout.fragment_main) {
     private var _binding: FragmentMainBinding? = null

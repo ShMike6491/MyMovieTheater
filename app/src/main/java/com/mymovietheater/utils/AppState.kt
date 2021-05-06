@@ -1,6 +1,6 @@
 package com.mymovietheater.utils
 
-import com.mymovietheater.data.local.MovieModel
+import com.mymovietheater.data.remote.MovieModel
 
 sealed class AppState {
     data class Success(val model: List<MovieModel>) : AppState()

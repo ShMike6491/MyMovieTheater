@@ -1,6 +1,6 @@
 package com.mymovietheater.utils
 
-import com.mymovietheater.data.local.MovieModel
+import com.mymovietheater.data.remote.MovieModel
 
 fun getMovies(): List<MovieModel> {
     val list: MutableList<MovieModel> = mutableListOf()

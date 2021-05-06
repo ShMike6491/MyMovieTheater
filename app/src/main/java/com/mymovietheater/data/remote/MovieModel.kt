@@ -1,4 +1,4 @@
-package com.mymovietheater.data.local
+package com.mymovietheater.data.remote
 
 import com.google.gson.annotations.SerializedName
 
