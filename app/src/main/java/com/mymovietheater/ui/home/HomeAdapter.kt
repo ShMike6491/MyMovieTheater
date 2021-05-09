@@ -10,29 +10,28 @@ import com.mymovietheater.R
 import com.mymovietheater.data.remote.MovieModel
 import com.mymovietheater.databinding.ItemMovieBinding
 
-class HomeAdapter : RecyclerView.Adapter<HomeAdapter.ViewHolder>() {
-    private var dataList: List<MovieModel> = emptyList()
+class HomeAdapter :
+    RecyclerView.Adapter<HomeAdapter.ViewHolder>() {
+    private var data: List<MovieModel> = emptyList()
 
-    fun setMovies(list: List<MovieModel>) {
-        dataList = list
+    fun setMovies(data: List<MovieModel>) {
+        this.data = data
         notifyDataSetChanged()
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HomeAdapter.ViewHolder {
         val binding =
             ItemMovieBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(dataList[position])
+        holder.bind(data[position])
     }
 
-    override fun getItemCount(): Int {
-        return dataList.size
-    }
+    override fun getItemCount() = data.size
 
-    class ViewHolder(private val binding: ItemMovieBinding) :
+    inner class ViewHolder(private val binding: ItemMovieBinding) :
         RecyclerView.ViewHolder(binding.root) {
         init {
             binding.root.setOnClickListener {

@@ -12,19 +12,21 @@ import retrofit2.Response
 
 class HomeViewModel(
     private val liveData: MutableLiveData<AppState> = MutableLiveData(),
-    private val repository: MovieRepository = MovieRepository(MovieAPI())
+    private val repository: MovieRepository = MovieRepository(MovieAPI()),
 ) : ViewModel() {
-    fun getLiveData() = liveData
+
+    fun getLiveData(): MutableLiveData<AppState> = liveData
+
     fun getMovies(path: String) {
         liveData.value = AppState.Loading
         repository.getMovies(path, callback)
     }
 
-    private val callback = object: Callback<MovieResponse> {
+    private val callback = object : Callback<MovieResponse> {
         override fun onResponse(call: Call<MovieResponse>, response: Response<MovieResponse>) {
             val res: MovieResponse? = response.body()
             liveData.postValue(
-                if(response.isSuccessful && res != null) {
+                if (response.isSuccessful && res != null) {
                     checkResponse(res)
                 } else {
                     AppState.Error(Throwable("server error"))
@@ -38,7 +40,7 @@ class HomeViewModel(
 
         private fun checkResponse(res: MovieResponse): AppState {
             val results = res.results
-            return if (results.isEmpty()) {
+            return if (results == null || results.isEmpty()) {
                 AppState.Error(Throwable("corrupted data"))
             } else {
                 AppState.Success(res.results)

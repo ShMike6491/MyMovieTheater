@@ -8,10 +8,11 @@
     android:orientation="vertical">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_popular_section"
+        android:id="@+id/rv_section_items"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/size_middle"
+        android:layout_height="wrap_content"
         android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         tools:listitem="@layout/item_movie" />
 
