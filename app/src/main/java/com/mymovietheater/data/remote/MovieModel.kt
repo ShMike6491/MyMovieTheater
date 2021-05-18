@@ -1,7 +1,10 @@
 package com.mymovietheater.data.remote
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.android.parcel.Parcelize
 
+@Parcelize
 data class MovieModel (
     @field:SerializedName("id") val id: Int,
     @field:SerializedName("title") val title: String,
@@ -14,4 +17,4 @@ data class MovieModel (
     @field:SerializedName("vote_average") val voteAverage: Double,
     @field:SerializedName("vote_count") val voteCount: Int,
     @field:SerializedName("genre_ids") val genreIds: List<Int>
-    )
+    ) : Parcelable

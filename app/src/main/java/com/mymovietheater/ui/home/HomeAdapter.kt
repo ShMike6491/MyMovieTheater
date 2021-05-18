@@ -10,7 +10,7 @@ import com.mymovietheater.R
 import com.mymovietheater.data.remote.MovieModel
 import com.mymovietheater.databinding.ItemMovieBinding
 
-class HomeAdapter :
+class HomeAdapter(val handler: FragmentHandler) :
     RecyclerView.Adapter<HomeAdapter.ViewHolder>() {
     private var data: List<MovieModel> = emptyList()
 
@@ -33,15 +33,16 @@ class HomeAdapter :
 
     inner class ViewHolder(private val binding: ItemMovieBinding) :
         RecyclerView.ViewHolder(binding.root) {
+        private var model: MovieModel? = null
+
         init {
             binding.root.setOnClickListener {
-                //TODO finish it later
-                Toast.makeText(it.context, "Detail window will be opened", Toast.LENGTH_SHORT)
-                    .show()
+                this@HomeAdapter.handler.openFragment(model!!)
             }
         }
 
         fun bind(model: MovieModel) {
+            this.model = model
             binding.apply {
                 Glide.with(ivMovieItem)
                     .load("https://image.tmdb.org/t/p/w500${model.poster}")
@@ -55,4 +56,8 @@ class HomeAdapter :
             }
         }
     }
+}
+
+interface FragmentHandler {
+    fun openFragment(model: MovieModel)
 }

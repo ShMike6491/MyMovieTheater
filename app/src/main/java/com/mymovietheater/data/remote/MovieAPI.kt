@@ -21,9 +21,10 @@ class MovieAPI {
         .client(client)
         .addConverterFactory(GsonConverterFactory.create())
         .build()
-        .create(MovieService::class.java)
+
+    val service: MovieService = retrofit.create(MovieService::class.java)
 
     fun getMovies(path: String, callback: Callback<MovieResponse>) {
-        retrofit.getMovies(path).enqueue(callback)
+        service.getMovies(path).enqueue(callback)
     }
 }

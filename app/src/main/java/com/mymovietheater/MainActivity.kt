@@ -2,6 +2,7 @@ package com.mymovietheater
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.mymovietheater.ui.category.CategoryFragment
 import com.mymovietheater.ui.home.HomeFragment
 
 class MainActivity : AppCompatActivity() {
@@ -10,7 +11,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         if(savedInstanceState == null) {
             supportFragmentManager.beginTransaction()
-                .add(R.id.container, HomeFragment())
+                .add(R.id.container, CategoryFragment())
                 .commitNow()
         }
     }
