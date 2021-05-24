@@ -7,7 +7,7 @@ import com.mymovietheater.data.remote.MovieAPI
 import com.mymovietheater.data.remote.MoviePagingSource
 import com.mymovietheater.data.remote.MovieService
 
-class PagingRepository(private val api: MovieAPI) {
+class PagingRepository {
     fun getMovies(query: String) =
         Pager(
             config = PagingConfig(
@@ -15,6 +15,6 @@ class PagingRepository(private val api: MovieAPI) {
                 maxSize = 100,
                 enablePlaceholders = false
             ),
-            pagingSourceFactory = { MoviePagingSource(api.service, query) }
+            pagingSourceFactory = { MoviePagingSource(MovieService.service, query) }
         ).liveData
 }

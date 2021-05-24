@@ -1,11 +1,11 @@
 package com.mymovietheater.data.repositories
 
-import com.mymovietheater.data.remote.MovieAPI
 import com.mymovietheater.data.remote.MovieResponse
+import com.mymovietheater.data.remote.MovieService
 import retrofit2.Callback
 
-class MovieRepository(private val retrofitRes: MovieAPI) {
+class MovieRepository(private val service: MovieService) {
     fun getMovies(path: String, callback: Callback<MovieResponse>) {
-        retrofitRes.getMovies(path, callback)
+        service.getMovies(path).enqueue(callback)
     }
 }

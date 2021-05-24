@@ -4,6 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.mymovietheater.data.remote.MovieAPI
 import com.mymovietheater.data.remote.MovieResponse
+import com.mymovietheater.data.remote.MovieService
 import com.mymovietheater.data.repositories.MovieRepository
 import com.mymovietheater.utils.AppState
 import retrofit2.Call
@@ -12,7 +13,7 @@ import retrofit2.Response
 
 class HomeViewModel(
     private val liveData: MutableLiveData<AppState> = MutableLiveData(),
-    private val repository: MovieRepository = MovieRepository(MovieAPI()),
+    private val repository: MovieRepository = MovieRepository(MovieService.service),
 ) : ViewModel() {
 
     fun getLiveData(): MutableLiveData<AppState> = liveData
