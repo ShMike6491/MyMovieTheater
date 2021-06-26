@@ -15,7 +15,6 @@ import com.mymovietheater.ui.details.DetailsFragment
 import com.mymovietheater.ui.details.MOVIE_ARGUMENT_KEY
 import com.mymovietheater.utils.AppState
 
-
 class HomeFragment : Fragment(R.layout.fragment_home), FragmentHandler {
     private var _binding: FragmentHomeBinding? = null
     private lateinit var viewModel: HomeViewModel
@@ -59,16 +58,5 @@ class HomeFragment : Fragment(R.layout.fragment_home), FragmentHandler {
             ?.replace(R.id.container, DetailsFragment.newInstance(bundle))
             ?.addToBackStack("")
             ?.commitAllowingStateLoss()
-
-//        val fragmentManager: FragmentManager = childFragmentManager
-//        val fragmentTransaction: FragmentTransaction = fragmentManager.beginTransaction()
-//        fragmentTransaction
-//            .replace((view!!.parent as ViewGroup).id, DetailsFragment.newInstance(model))
-//            .addToBackStack(null)
-//            .commit()
-
-//        supportFragmentManager.beginTransaction()
-//            .add(R.id.container, HomeFragment())
-//            .commitNow()
     }
 }

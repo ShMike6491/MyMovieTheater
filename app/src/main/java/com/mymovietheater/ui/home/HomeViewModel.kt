@@ -2,7 +2,6 @@ package com.mymovietheater.ui.home
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.mymovietheater.data.remote.MovieAPI
 import com.mymovietheater.data.remote.MovieResponse
 import com.mymovietheater.data.remote.MovieService
 import com.mymovietheater.data.repositories.MovieRepository
