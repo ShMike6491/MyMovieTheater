@@ -4,7 +4,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.mymovietheater.data.remote.MovieResponse
 import com.mymovietheater.data.remote.MovieService
-import com.mymovietheater.data.repositories.MovieRepository
 import com.mymovietheater.utils.AppState
 import retrofit2.Call
 import retrofit2.Callback

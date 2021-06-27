@@ -6,16 +6,18 @@ import androidx.room.PrimaryKey
 import androidx.room.TypeConverter
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
+import com.mymovietheater.data.repositories.Category
+import com.mymovietheater.data.repositories.Movie
 
-@Entity
-data class Genre(
+@Entity(tableName = "category")
+data class DbCategory(
     @PrimaryKey val searchId: String,
     @ColumnInfo(name = "title") val title: String,
-    @ColumnInfo(name = "movies") val movies: List<Movie>? = null
+    @ColumnInfo(name = "movies") val movies: List<DbMovie>? = null
 )
 
-@Entity
-data class Movie(
+@Entity(tableName = "movie")
+data class DbMovie(
     @PrimaryKey val id: Int,
     @ColumnInfo(name = "title") val title: String,
     @ColumnInfo(name = "description") val description: String,
@@ -24,20 +26,52 @@ data class Movie(
     @ColumnInfo(name = "release_date") val releaseDate: String
 )
 
-class GenreConverter {
+/**
+ * Data type conversion to save Json to the database
+ */
+class CategoryConverter {
     @TypeConverter
-    fun fromGenreMovies(movies: List<Movie?>?): String? {
-        if (movies == null) { return null }
+    fun fromGenreMovies(movies: List<DbMovie?>?): String? {
+        if (movies == null) {
+            return null
+        }
         val gson = Gson()
-        val type = object : TypeToken<List<Movie?>?>() {}.type
+        val type = object : TypeToken<List<DbMovie?>?>() {}.type
         return gson.toJson(movies, type)
     }
 
     @TypeConverter
-    fun toGenreMovies(movieString: String?): List<Movie>? {
-        if (movieString == null) { return null }
+    fun toGenreMovies(movieString: String?): List<DbMovie>? {
+        if (movieString == null) {
+            return null
+        }
         val gson = Gson()
-        val type = object : TypeToken<List<Movie?>?>() {}.type
-        return gson.fromJson<List<Movie>>(movieString, type)
+        val type = object : TypeToken<List<DbMovie?>?>() {}.type
+        return gson.fromJson<List<DbMovie>>(movieString, type)
     }
+}
+
+/**
+ * Extension function to convert database data layer to the application layer
+ */
+fun List<DbCategory>.asDomainCategory(): List<Category> = map {
+    Category(
+        searchId = it.searchId,
+        title = it.title,
+        movies = it.movies?.asDomainMovie()
+    )
+}
+
+/**
+ * Extension function to convert database data layer to the application layer
+ */
+fun List<DbMovie>.asDomainMovie(): List<Movie> = map {
+    Movie(
+        id = it.id,
+        title = it.title,
+        description = it.description,
+        adult = it.adult,
+        poster = it.poster,
+        releaseDate = it.releaseDate
+    )
 }

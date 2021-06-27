@@ -2,6 +2,7 @@ package com.mymovietheater.data.remote
 
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import com.mymovietheater.data.local.DbMovie
 import kotlinx.android.parcel.Parcelize
 
 data class MovieResponse(
@@ -12,7 +13,7 @@ data class MovieResponse(
 )
 
 @Parcelize
-data class MovieModel (
+data class MovieModel(
     @field:SerializedName("id") val id: Int,
     @field:SerializedName("title") val title: String,
     @field:SerializedName("overview") val description: String,
@@ -25,3 +26,17 @@ data class MovieModel (
     @field:SerializedName("vote_count") val voteCount: Int,
     @field:SerializedName("genre_ids") val genreIds: List<Int>
 ) : Parcelable
+
+/**
+ * Extension function to convert network data layer to database layer
+ */
+fun MovieResponse.asDatabaseMovies(): List<DbMovie> = results.map {
+    DbMovie(
+        id = it.id,
+        title = it.title,
+        description = it.description,
+        adult = it.adult,
+        poster = it.poster,
+        releaseDate = it.releaseDate
+    )
+}
