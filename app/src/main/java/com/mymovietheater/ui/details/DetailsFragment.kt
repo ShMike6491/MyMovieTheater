@@ -8,7 +8,9 @@ import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.mymovietheater.R
 import com.mymovietheater.data.remote.MovieModel
 import com.mymovietheater.databinding.FragmentDetailsBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class DetailsFragment : Fragment(R.layout.fragment_details) {
     private var _binding: FragmentDetailsBinding? = null
     private val binding get() = _binding!!

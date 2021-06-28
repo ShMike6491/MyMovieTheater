@@ -10,8 +10,10 @@ import com.mymovietheater.data.remote.MovieService
 import com.mymovietheater.data.remote.asDatabaseMovies
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
+import javax.inject.Inject
+import javax.inject.Singleton
 
-class Repository (val dao: CategoryDao, val service: MovieService) {
+class Repository @Inject constructor(private val dao: CategoryDao, private val service: MovieService) {
     companion object {
         const val TAG = "Repository"
     }
