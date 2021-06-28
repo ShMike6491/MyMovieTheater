@@ -4,6 +4,7 @@ plugins {
     id 'kotlin-kapt'
     id 'kotlin-android-extensions'
     id 'dagger.hilt.android.plugin'
+    id "androidx.navigation.safeargs.kotlin"
 }
 
 android {
@@ -21,10 +22,6 @@ android {
 
         buildConfigField("String", "TMDB_ACCESS_KEY", tmdb_api_key)
     }
-
-//    packagingOptions {
-//        exclude 'META-INF/atomicfu.kotlin_module'
-//    }
 
     buildTypes {
         release {
@@ -83,6 +80,10 @@ dependencies {
     kapt "com.google.dagger:hilt-android-compiler:$hilt_version"
     implementation "androidx.hilt:hilt-lifecycle-viewmodel:$hiltAndroidXVersion"
     kapt "androidx.hilt:hilt-compiler:$hiltAndroidXVersion"
+
+    //Navigation Component
+    implementation "androidx.navigation:navigation-fragment-ktx:$navigationVersion"
+    implementation "androidx.navigation:navigation-ui-ktx:$navigationVersion"
 }
 
 kapt {
