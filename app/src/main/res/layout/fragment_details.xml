@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context=".ui.details.DetailsFragment">
 
     <ImageView
         android:id="@+id/iv_poster"
@@ -45,6 +46,5 @@
             tools:text="Jdjasflas ajsidjla lasidlia jdiadla lfnaufujw aldasdmwj i iljwld iwjl al  ladjljlijlj" />
 
     </FrameLayout>
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
