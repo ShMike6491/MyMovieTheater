@@ -2,7 +2,6 @@ package com.mymovietheater
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.mymovietheater.ui.category.CategoryFragment
 import com.mymovietheater.ui.home.HomeFragment
 
 class MainActivity : AppCompatActivity() {

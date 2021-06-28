@@ -44,7 +44,6 @@ abstract class LocalDataBase : RoomDatabase() {
                 dao.deleteAll()
 
                 //set default values
-                dao.insert(DbCategory("latest", "Latest"))
                 dao.insert(DbCategory("now_playing", "Now Playing"))
                 dao.insert(DbCategory("popular", "Popular"))
                 dao.insert(DbCategory("top_rated", "Top Rated"))

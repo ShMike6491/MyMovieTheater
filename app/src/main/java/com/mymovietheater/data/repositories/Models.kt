@@ -10,7 +10,7 @@ data class Movie(
     val id: Int,
     val title: String,
     val description: String,
-    val adult: Boolean,
-    val poster: String,
-    val releaseDate: String
+    val adult: Boolean?,
+    val poster: String?,
+    val releaseDate: String?
 )

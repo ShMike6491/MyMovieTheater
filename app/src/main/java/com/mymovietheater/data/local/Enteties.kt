@@ -21,9 +21,9 @@ data class DbMovie(
     @PrimaryKey val id: Int,
     @ColumnInfo(name = "title") val title: String,
     @ColumnInfo(name = "description") val description: String,
-    @ColumnInfo(name = "adult") val adult: Boolean,
-    @ColumnInfo(name = "poster") val poster: String,
-    @ColumnInfo(name = "release_date") val releaseDate: String
+    @ColumnInfo(name = "adult") val adult: Boolean?,
+    @ColumnInfo(name = "poster") val poster: String?,
+    @ColumnInfo(name = "release_date") val releaseDate: String?
 )
 
 /**
@@ -71,7 +71,7 @@ fun List<DbMovie>.asDomainMovie(): List<Movie> = map {
         title = it.title,
         description = it.description,
         adult = it.adult,
-        poster = it.poster,
+        poster = "https://image.tmdb.org/t/p/w500${it.poster}",
         releaseDate = it.releaseDate
     )
 }

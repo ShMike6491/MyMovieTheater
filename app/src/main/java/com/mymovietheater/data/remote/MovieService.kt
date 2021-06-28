@@ -18,19 +18,6 @@ interface MovieService {
         @Query("api_key") apiKey: String = TEMP_KEY
     ): MovieResponse
 
-    @GET("movie/{collection}")
-    fun getMovies(
-        @Path("collection") collection: String,
-        @Query("api_key") apiKey: String = TEMP_KEY
-    ): Call<MovieResponse>
-
-    @GET("movie/{collection}")
-    suspend fun getPagedMovies(
-        @Path("collection") collection: String,
-        @Query("api_key") apiKey: String = TEMP_KEY,
-        @Query("page") page: Int
-    ): MovieResponse
-
     companion object {
         private const val BASE_URL = "https://api.themoviedb.org/3/"
 
