@@ -1,7 +1,7 @@
 buildscript {
     ext.kotlin_version = '1.4.32'
     ext.hilt_version = '2.35'
-    ext.hiltAndroidXVersion = '1.0.0-alpha02'
+    ext.hiltAndroidXVersion = '1.0.0-alpha03'
     ext.navigationVersion = '2.3.0'
 
     repositories {
