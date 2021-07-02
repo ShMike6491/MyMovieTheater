@@ -8,6 +8,7 @@ import com.mymovietheater.data.local.DbCategory
 import com.mymovietheater.data.local.asDomainCategory
 import com.mymovietheater.data.remote.MovieService
 import com.mymovietheater.data.remote.asDatabaseMovies
+import com.mymovietheater.data.remote.asDomainMovie
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
@@ -24,6 +25,8 @@ class Repository @Inject constructor(
 
     val categories: LiveData<List<Category>> =
         Transformations.map(dao.getCategories()) { it.asDomainCategory() }
+
+    suspend fun requestLatest(): Movie = service.getLatest().asDomainMovie()
 
     suspend fun refreshCategories(): Unit = withContext(Dispatchers.IO) {
         Log.d(TAG, "Refreshing categories data")

@@ -2,6 +2,7 @@ package com.mymovietheater.data.remote
 
 import com.google.gson.annotations.SerializedName
 import com.mymovietheater.data.local.DbMovie
+import com.mymovietheater.data.repositories.Movie
 
 data class MovieResponse(
     @field:SerializedName("results") val results: List<MovieModel>,
@@ -32,3 +33,12 @@ fun MovieResponse.asDatabaseMovies(): List<DbMovie> = results.map {
         releaseDate = it.releaseDate
     )
 }
+
+fun MovieModel.asDomainMovie(): Movie = Movie(
+    id = id,
+    title = title,
+    description = description,
+    adult = adult,
+    poster = "https://image.tmdb.org/t/p/w500$poster",
+    releaseDate = releaseDate
+)

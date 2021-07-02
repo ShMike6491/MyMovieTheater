@@ -8,7 +8,7 @@ import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.mymovietheater.data.repositories.Movie
 import com.mymovietheater.databinding.ItemMovieBinding
 
-class HomeAdapterChild(private val movies: List<Movie>) :
+class HomeAdapterChild(private val movies: List<Movie>, val navCallback: (Movie) -> Unit) :
     RecyclerView.Adapter<HomeAdapterChild.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = ViewHolder(
@@ -24,8 +24,11 @@ class HomeAdapterChild(private val movies: List<Movie>) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(data: Movie) {
             binding.apply {
+
+                root.setOnClickListener { navCallback(data) }
+
                 tvItemTitle.text = data.title
-                tvItemDesc.text = data.description
+
                 Glide.with(itemView)
                     .load(data.poster)
                     .centerCrop()
