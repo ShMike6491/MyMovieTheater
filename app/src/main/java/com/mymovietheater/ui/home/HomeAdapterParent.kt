@@ -3,7 +3,6 @@ package com.mymovietheater.ui.home
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.recyclerview.widget.AdapterListUpdateCallback
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
@@ -15,32 +14,32 @@ import com.mymovietheater.databinding.ItemLatestMovieBinding
 import java.lang.IllegalArgumentException
 
 class HomeAdapterParent(val navCallback: (Movie) -> Unit) :
-    RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+    RecyclerView.Adapter<RecyclerView.ViewHolder>()
+{
     private var categoryList: List<Category> = emptyList()
-    private var latestMovie: Movie? = null
+    private var poster: Movie? = null
     private val viewPool = RecyclerView.RecycledViewPool()
 
     fun setData(data: List<Category>) {
         categoryList = data
-        notifyDataSetChanged()
-    }
 
-    fun setMovie(data: Movie?) {
-        latestMovie = data
+        val trendingMovie = data[0].movies?.get(0)
+        poster = trendingMovie
+
         notifyDataSetChanged()
     }
 
     override fun getItemViewType(position: Int) = when (position) {
-        0 -> VIEW_TYPE_LATEST
-        else -> VIEW_TYPE_CATEGORY
+        0 -> VIEW_TYPE_POSTER
+        else -> VIEW_TYPE_CATEGORIES
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return when (viewType) {
-            VIEW_TYPE_LATEST -> HeaderHolder(
+            VIEW_TYPE_POSTER -> PosterHolder(
                 ItemLatestMovieBinding.inflate(LayoutInflater.from(parent.context), parent, false)
             )
-            VIEW_TYPE_CATEGORY -> ViewHolder(
+            VIEW_TYPE_CATEGORIES -> ViewHolder(
                 ItemCategoryBinding.inflate(LayoutInflater.from(parent.context), parent, false)
             )
             else -> throw IllegalArgumentException()
@@ -49,7 +48,7 @@ class HomeAdapterParent(val navCallback: (Movie) -> Unit) :
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         if (holder is ViewHolder) holder.bind(categoryList[position - 1])
-        if (holder is HeaderHolder) holder.bind(latestMovie)
+        if (holder is PosterHolder) holder.bind(poster)
     }
 
     override fun getItemCount() = categoryList.size + 1
@@ -57,15 +56,17 @@ class HomeAdapterParent(val navCallback: (Movie) -> Unit) :
     inner class ViewHolder(private val binding: ItemCategoryBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(data: Category) {
+            val adapter = HomeAdapterChild(data.movies ?: emptyList(), navCallback)
+
             binding.apply {
                 tvCategoryTitle.text = data.title
-                rvMovies.adapter = HomeAdapterChild(data.movies ?: emptyList(), navCallback)
+                rvMovies.adapter = adapter
                 rvMovies.setRecycledViewPool(viewPool)
             }
         }
     }
 
-    inner class HeaderHolder(private val binding: ItemLatestMovieBinding) :
+    inner class PosterHolder(private val binding: ItemLatestMovieBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(data: Movie?) = data?.let {
             binding.apply {
@@ -85,7 +86,7 @@ class HomeAdapterParent(val navCallback: (Movie) -> Unit) :
     }
 
     companion object {
-        const val VIEW_TYPE_LATEST = 1
-        const val VIEW_TYPE_CATEGORY = 2
+        const val VIEW_TYPE_POSTER = 1
+        const val VIEW_TYPE_CATEGORIES = 2
     }
 }

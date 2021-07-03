@@ -18,11 +18,6 @@ interface MovieService {
         @Query("api_key") apiKey: String = TEMP_KEY
     ): MovieResponse
 
-    @GET("movie/latest")
-    suspend fun getLatest(
-        @Query("api_key") apiKey: String = TEMP_KEY
-    ): MovieModel
-
     companion object {
         private const val BASE_URL = "https://api.themoviedb.org/3/"
 

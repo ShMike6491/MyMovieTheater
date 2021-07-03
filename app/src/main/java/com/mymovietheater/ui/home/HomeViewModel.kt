@@ -21,8 +21,4 @@ class HomeViewModel @Inject constructor(private val repo: Repository) : ViewMode
     fun refresh() = viewModelScope.launch {
         repo.refreshCategories()
     }
-
-    fun getLatest() = viewModelScope.launch {
-        _latest.postValue(repo.requestLatest())
-    }
 }

@@ -26,8 +26,6 @@ class Repository @Inject constructor(
     val categories: LiveData<List<Category>> =
         Transformations.map(dao.getCategories()) { it.asDomainCategory() }
 
-    suspend fun requestLatest(): Movie = service.getLatest().asDomainMovie()
-
     suspend fun refreshCategories(): Unit = withContext(Dispatchers.IO) {
         Log.d(TAG, "Refreshing categories data")
 
@@ -41,7 +39,6 @@ class Repository @Inject constructor(
             Log.d(TAG, "Server request")
             //get data from the network
             val response = service.getCategories(category.searchId).asDatabaseMovies()
-            Log.d(TAG, "Saving network data $response")
 
             //refresh existing data with the network response
             dao.insert(
