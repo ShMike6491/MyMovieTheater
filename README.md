@@ -3,7 +3,12 @@ Movie Theater App
 
 **CURRENTLY UNDER DEVELOPEMENT**
 
-This is my personal pet project, which I am building to exercise all of the best practices I've learned. 
+In this application you will be able to brouse through a wide variety of movie and tv shows collections. Follow to all of the specific movie details, actors and recommendations. You would be able to switch between collections and genres.
+
+Descriptions
+---------------------------
+
+This is my personal pet project, which I am building to exercise all of the best practices of android development I've learned. I've build this app following one of the most videly used architecture principles (MVVM). So far the data persistence layer is ready with the offline cashing. Network layer is ready as well (I am using TMDB service for this project). WorkManager is responsible for the daily updates. I am using Hilt to manage dependency injection and Navigation component to siplify app navigation. Also I was able to integrate paging library for the search page. Details page is not done yet, navigation drawer will be filled with other features and all the UI layer is going to be refactored and redesign with best practices of material design. I am planning to add vide player functionality, recommendations, splash screen, unit tests and many more. 
 
 Screenshots
 ---------------------------
