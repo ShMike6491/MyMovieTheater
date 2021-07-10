@@ -13,13 +13,13 @@ This is my personal pet project, which I am building to exercise all of the best
 Screenshots
 ---------------------------
 
-<img align="left" src="https://drive.google.com/uc?export=view&id=1ZLa-mL0030QNHHZARkCnn2YUyUmr0-JO" alt="alt text" width="200" height="400">
+<img align="left" src="https://drive.google.com/uc?export=view&id=1ZLa-mL0030QNHHZARkCnn2YUyUmr0-JO" alt="alt text" width="150" height="300">
 
-<img align="left" src="https://drive.google.com/uc?export=view&id=1I5u80JKp_SZ-rtLgmoyQi4-0ELgFy5Mm" alt="alt text" width="200" height="400">
+<img align="left" src="https://drive.google.com/uc?export=view&id=1I5u80JKp_SZ-rtLgmoyQi4-0ELgFy5Mm" alt="alt text" width="150" height="300">
 
-<img align="left" src="https://drive.google.com/uc?export=view&id=1cpfbd0Uk2Ltq09hjgApf0CKABvkgpUCm" alt="alt text" width="200" height="400">
+<img align="left" src="https://drive.google.com/uc?export=view&id=1cpfbd0Uk2Ltq09hjgApf0CKABvkgpUCm" alt="alt text" width="150" height="300">
 
-<img src="https://drive.google.com/uc?export=view&id=16fQ9pyeeqeqJWgb7HY3xlqIH0hSqu-lE" alt="alt text" width="200" height="400">
+<img src="https://drive.google.com/uc?export=view&id=16fQ9pyeeqeqJWgb7HY3xlqIH0hSqu-lE" alt="alt text" width="150" height="300">
 
 Libraries Used
 ---------------------------
