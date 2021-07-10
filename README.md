@@ -1,7 +1,7 @@
 Movie Theater App
 ---------------------------
 
-####CURRENTLY UNDER DEVELOPEMENT
+**CURRENTLY UNDER DEVELOPEMENT**
 
 This is my personal pet project, which I am building to exercise all of the best practices I've learned. 
 
