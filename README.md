@@ -1,7 +1,7 @@
 Movie Theater App
 ---------------------------
 
-**CURRENTLY UNDER DEVELOPEMENT**
+>**CURRENTLY UNDER DEVELOPEMENT**
 
 In this application you will be able to brouse through a wide variety of movie and tv shows collections. Follow to all of the specific movie details, actors and recommendations. You would be able to switch between collections and genres.
 
